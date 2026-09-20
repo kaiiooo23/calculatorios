@@ -114,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['num1'], $_POST['num2'
         </div>
     </div>
 
-    <!-- --- 2. LOGIKA JAVASCRIPT (CLIENT-SIDE) --- -->
+    
     <script>
         const val = document.getElementById('val');
         const expr = document.getElementById('expr');
@@ -122,7 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['num1'], $_POST['num2'
         let currentOp = null;
         let isWaitingSecondNum = false;
 
-        // Input Angka (0-9)
+        
         document.querySelectorAll('[data-num]').forEach(btn => {
             btn.onclick = () => {
                 val.classList.remove('error');
@@ -136,13 +136,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['num1'], $_POST['num2'
             };
         });
 
-        // Input Titik Desimal (.)
+        
         document.getElementById('btnDot').onclick = () => {
             if (isWaitingSecondNum) { val.innerText = '0.'; isWaitingSecondNum = false; }
             else if (!val.innerText.includes('.')) val.innerText += '.';
         };
 
-        // Tombol Operasi (+, −, ×, ÷, %)
+        
         document.querySelectorAll('[data-op]').forEach(btn => {
             btn.onclick = () => {
                 num1 = val.innerText;
@@ -152,7 +152,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['num1'], $_POST['num2'
             };
         });
 
-        // Tombol Reset (AC)
+        
         document.getElementById('btnAC').onclick = () => {
             val.innerText = '0';
             expr.innerText = '';
@@ -161,7 +161,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['num1'], $_POST['num2'
             val.classList.remove('error');
         };
 
-        // Tombol Plus/Minus (±) & Persen (%)
+        
         document.getElementById('btnSign').onclick = () => {
             if (val.innerText !== '0') val.innerText = val.innerText.startsWith('-') ? val.innerText.slice(1) : '-' + val.innerText;
         };
@@ -169,7 +169,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['num1'], $_POST['num2'
             val.innerText = String(parseFloat(val.innerText) / 100);
         };
 
-        // Tombol Sama Dengan (=) -> Submit POST ke PHP
         document.getElementById('btnEquals').onclick = () => {
             if (currentOp && num1 !== '') {
                 document.getElementById('num1').value = num1;
